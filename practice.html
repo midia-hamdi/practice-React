@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
         .container {
             max-width: 300px;
@@ -57,19 +59,6 @@
 </head>
 
 <body>
-    <div class="container">
-        <div id="todo-app">
-            <label class="todo-label" for="new-todo">What do you want to do today?</label>
-            <input type="text" id="new-todo" class="todo-input" placeholder="type your tasks">
-        </div>
-
-        <div class="todo-list">
-            <div class="todo-item">
-                <input type="checkbox">
-                <span class="todo-content">task 1</span>
-            </div>
-        </div>
-    </div>
 
     <div id="root"></div>
 
@@ -78,11 +67,39 @@
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
         <script type="text/babel">
-            class SignForm extends React.Component {
-                render() {
-                    return 
+
+            class TodoApp extends React.Component {
+                render(){
+                    return  <div id="todo-app">
+                                <label className="todo-label" htmlFor="new-todo">What do you want to do today?</label>
+                                <input type="text" id="new-todo" className="todo-input" placeholder="type your tasks" />
+                            </div>
                 }
             }
+
+            class TodoList extends React.Component {
+                render(){
+                    return  <div className="todo-list">
+                                <div className="todo-item">
+                                    <input type="checkbox" />
+                                    <span className="todo-content">task 1</span>
+                                </div>
+                            </div>
+                }
+            }
+
+            class SignForm extends React.Component {
+                render() {
+                    return <div className="container">
+                            <TodoApp />
+                            <TodoList />
+
+
+                            </div>
+                }
+            }
+
+            ReactDOM.render(<SignForm />, document.getElementById('root'));
         </script>
 </body>
 </html>
